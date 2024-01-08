@@ -31,4 +31,11 @@ git config --global alias.ci commit
 git config --global alias.cim "commit -m"
 git config --global alias.st status
 
+$SSH_AGENT_FILE="github-ssh-agent-config.txt"
+if [ -e "$SSH_AGENT_FILE" ]
+then
+    cat "$SSH_AGENT_FILE" >> $HOME/.profile
+fi
+
 echo 'Done.'
+
