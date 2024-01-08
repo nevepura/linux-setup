@@ -37,5 +37,15 @@ then
     cat "$SSH_AGENT_FILE" >> $HOME/.profile
 fi
 
+
+# printer drivers
+echo "Installing printer drivers"
+$PRINTER=printer-driver.deb
+wget -O $PRINTER http://download.ebz.epson.net/dsc/op/stable/RPMS/x86_64/epson-inkjet-printer-stylus-nx110-series-1.0.0-1lsb3.2.x86_64.rpm
+dkpg -i $PRINTER
+# Missing dependencies can occur prevent the installation to complete. Fix them then retry...
+apt install -f -y
+dpkg -i $PRINTER
+
 echo 'Done.'
 
